@@ -1,11 +1,13 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "docground"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Documentation-grounded prompt revision and verification for LLM code generation"
+readme = "README.md"
+authors = [{name = "ianmaloba", email = "ianmalobamwakha@gmail.com"}]
 requires-python = ">=3.11"
 dependencies = [
     "bandit>=1.7",
@@ -16,8 +18,12 @@ dependencies = [
 [project.scripts]
 docground = "docground.cli:main"
 
+[project.urls]
+Repository = "https://github.com/ianmaloba/DocGround"
+Issues = "https://github.com/ianmaloba/DocGround/issues"
+
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "build>=1.2", "twine>=5"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -29,6 +35,9 @@ markers = [
 [tool.setuptools.packages.find]
 include = ["docground*"]
 namespaces = false
+
+[tool.setuptools.dynamic]
+version = {attr = "docground.__version__"}
 
 [tool.setuptools.package-data]
 "docground.data" = ["*.json"]

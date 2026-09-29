@@ -1,0 +1,52 @@
+name: Package and tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Build source distribution and wheel
+        run: |
+          python -m pip install build twine pytest
+          python -m build
+          python -m twine check --strict dist/*
+          python -m pip install dist/*.whl
+          python -m pip check
+      - name: Test the installed wheel away from the source tree
+        run: |
+          mkdir -p "${RUNNER_TEMP}/docground-installed-check"
+          cp -R tests pyproject.toml "${RUNNER_TEMP}/docground-installed-check/"
+          cd "${RUNNER_TEMP}/docground-installed-check"
+          python -m pytest -q tests --import-mode=importlib -m 'not docker'
+          docground ground 'Read a CSV file with pandas'
+      - name: Check real Docker execution and timeout cleanup
+        if: matrix.python == '3.14'
+        working-directory: ${{ runner.temp }}/docground-installed-check
+        env:
+          DOCGROUND_RUN_DOCKER_TESTS: '1'
+        run: |
+          docker pull python:3.11-slim
+          python -m pytest -q tests --import-mode=importlib -m docker
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: matrix.python == '3.14'
+        with:
+          name: docground-distributions
+          path: dist/*
+          if-no-files-found: error
