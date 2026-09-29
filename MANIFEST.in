@@ -1,0 +1,5 @@
+include README.md pyproject.toml
+recursive-include docground *.py *.json
+recursive-include tests *.py
+global-exclude __pycache__ *.py[cod]
+exclude AI_WORKFLOW_PROMPTS.md
