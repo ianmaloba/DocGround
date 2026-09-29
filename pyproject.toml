@@ -20,6 +20,7 @@ dev = ["pytest>=8.0"]
 testpaths = ["tests"]
 markers = [
     "live: tests that make real API calls (skipped unless explicitly enabled)",
+    "docker: integration tests using a local Docker image (opt in with DOCGROUND_RUN_DOCKER_TESTS=1)",
 ]
 
 [tool.setuptools.packages.find]
