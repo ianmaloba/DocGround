@@ -1,0 +1,180 @@
+{
+  "_meta": {
+    "snapshot_date": "2026-09-29",
+    "source": "Manually curated, partial API records from official Python 3.14.7, pandas 3.0.6, NumPy 2.5 and Requests 2.34.2 documentation.",
+    "method": "manual transcription with official reference URLs and source versions; selected APIs rechecked on the snapshot date",
+    "library_count": 8,
+    "note": "Partial dated snapshot only. Missing API entries do not establish non-existence; upstream APIs may change and this file is not regenerated automatically."
+  },
+  "pandas": {
+    "kind": "third-party",
+    "distribution_name": "pandas",
+    "modules": ["pandas"],
+    "coverage_complete": false,
+    "source_urls": [
+      "https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html",
+      "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
+      "https://pandas.pydata.org/docs/reference/api/pandas.merge.html",
+      "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html"
+    ],
+    "source_version": "3.0.6",
+    "source_checked_at": "2026-09-29",
+    "apis": ["pandas.read_csv", "pandas.DataFrame", "pandas.DataFrame.head", "pandas.DataFrame.groupby", "pandas.merge", "pandas.DataFrame.merge", "pandas.DataFrame.to_csv"],
+    "summary": "Tabular data analysis library built around the DataFrame.",
+    "keywords": ["dataframe", "csv", "tabular", "spreadsheet"],
+    "signatures": [
+      "pandas.read_csv(filepath_or_buffer, *, sep=',', header='infer', names=None, usecols=None, dtype=None, nrows=None) -> DataFrame",
+      "pandas.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None)",
+      "DataFrame.head(n=5) -> DataFrame",
+      "DataFrame.groupby(by=None, level=None, *, as_index=True, sort=True, group_keys=True, observed=True, dropna=True) -> DataFrameGroupBy",
+      "pandas.merge(left, right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=False, suffixes=('_x', '_y'), copy=<no_default>, indicator=False, validate=None) -> DataFrame",
+      "DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None) -> DataFrame",
+      "DataFrame.to_csv(path_or_buf=None, *, sep=',', index=True) -> str | None"
+    ]
+  },
+  "numpy": {
+    "kind": "third-party",
+    "distribution_name": "numpy",
+    "modules": ["numpy"],
+    "coverage_complete": false,
+    "source_urls": [
+      "https://numpy.org/doc/stable/reference/generated/numpy.reshape.html",
+      "https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html"
+    ],
+    "source_version": "2.5",
+    "source_checked_at": "2026-09-29",
+    "apis": ["numpy.array", "numpy.zeros", "numpy.arange", "numpy.mean", "numpy.reshape", "numpy.linalg.norm"],
+    "summary": "N-dimensional arrays and vectorised numerical operations.",
+    "keywords": ["array", "matrix", "vectorised", "vectorized", "ndarray"],
+    "signatures": [
+      "numpy.array(object, dtype=None, *, copy=True, order='K', ndmin=0) -> ndarray",
+      "numpy.zeros(shape, dtype=float, order='C') -> ndarray",
+      "numpy.arange(start, stop=None, step=1, dtype=None) -> ndarray",
+      "numpy.mean(a, axis=None, dtype=None, out=None) -> ndarray | float",
+      "numpy.reshape(a, /, shape, order='C', *, copy=None) -> ndarray",
+      "numpy.linalg.norm(x, ord=None, axis=None, keepdims=False) -> float | ndarray"
+    ]
+  },
+  "requests": {
+    "kind": "third-party",
+    "distribution_name": "requests",
+    "modules": ["requests"],
+    "coverage_complete": false,
+    "source_urls": [
+      "https://requests.readthedocs.io/en/stable/api/",
+      "https://requests.readthedocs.io/en/latest/user/quickstart/"
+    ],
+    "source_version": "2.34.2",
+    "source_checked_at": "2026-09-29",
+    "apis": ["requests.get", "requests.post", "requests.request", "requests.Response.json", "requests.Response.raise_for_status"],
+    "summary": "HTTP client for Python.",
+    "keywords": ["http", "api call", "rest", "download url"],
+    "signatures": [
+      "requests.get(url, params=None, **kwargs) -> Response",
+      "requests.post(url, data=None, json=None, **kwargs) -> Response",
+      "requests.request(method, url, **kwargs) -> Response",
+      "Response.json(**kwargs) -> Any",
+      "Response.raise_for_status() -> None",
+      "Response.status_code -> int",
+      "Response.text -> str"
+    ]
+  },
+  "json": {
+    "kind": "stdlib",
+    "modules": ["json"],
+    "coverage_complete": false,
+    "source_url": "https://docs.python.org/3/library/json.html",
+    "source_version": "3.14.7",
+    "source_checked_at": "2026-09-29",
+    "apis": ["json.load", "json.loads", "json.dump", "json.dumps", "json.JSONDecodeError"],
+    "summary": "JSON encoding and decoding (standard library).",
+    "keywords": ["serialise", "serialize", "deserialise", "deserialize"],
+    "signatures": [
+      "json.load(fp, *, cls=None, object_hook=None, parse_float=None) -> Any",
+      "json.loads(s, *, cls=None, object_hook=None, parse_float=None) -> Any",
+      "json.dump(obj, fp, *, skipkeys=False, indent=None, sort_keys=False, default=None) -> None",
+      "json.dumps(obj, *, skipkeys=False, indent=None, sort_keys=False, default=None) -> str",
+      "json.JSONDecodeError(msg, doc, pos)"
+    ]
+  },
+  "os": {
+    "kind": "stdlib",
+    "modules": ["os"],
+    "coverage_complete": false,
+    "source_url": "https://docs.python.org/3/library/os.html",
+    "source_version": "3.14.7",
+    "source_checked_at": "2026-09-29",
+    "apis": ["os.getcwd", "os.listdir", "os.makedirs", "os.path.join", "os.path.exists"],
+    "summary": "Operating-system interfaces for environment, processes and filesystems.",
+    "keywords": ["environment variable", "getenv", "filesystem"],
+    "signatures": [
+      "os.environ -> MutableMapping[str, str]",
+      "os.environ.get(key, default=None) -> str | None",
+      "os.getcwd() -> str",
+      "os.listdir(path='.') -> list[str]",
+      "os.makedirs(name, mode=0o777, exist_ok=False) -> None",
+      "os.path.join(a, *paths) -> str",
+      "os.path.exists(path) -> bool"
+    ]
+  },
+  "re": {
+    "kind": "stdlib",
+    "modules": ["re"],
+    "coverage_complete": false,
+    "source_url": "https://docs.python.org/3/library/re.html",
+    "source_version": "3.14.7",
+    "source_checked_at": "2026-09-29",
+    "apis": ["re.search", "re.match", "re.fullmatch", "re.findall", "re.sub", "re.compile"],
+    "summary": "Regular expression matching (standard library).",
+    "keywords": ["regex", "regular expression", "pattern match"],
+    "signatures": [
+      "re.search(pattern, string, flags=0) -> Match | None",
+      "re.match(pattern, string, flags=0) -> Match | None",
+      "re.fullmatch(pattern, string, flags=0) -> Match | None",
+      "re.findall(pattern, string, flags=0) -> list",
+      "re.sub(pattern, repl, string, count=0, flags=0) -> str",
+      "re.compile(pattern, flags=0) -> Pattern",
+      "Match.group(*args) -> str | tuple"
+    ]
+  },
+  "datetime": {
+    "kind": "stdlib",
+    "modules": ["datetime"],
+    "coverage_complete": false,
+    "source_url": "https://docs.python.org/3/library/datetime.html",
+    "source_version": "3.14.7",
+    "source_checked_at": "2026-09-29",
+    "apis": ["datetime.datetime.now", "datetime.datetime.utcnow", "datetime.datetime.strptime", "datetime.datetime.strftime", "datetime.datetime.fromisoformat", "datetime.timedelta", "datetime.date.today"],
+    "summary": "Date and time types and arithmetic (standard library).",
+    "keywords": ["timestamp", "date", "time", "timezone"],
+    "signatures": [
+      "datetime.datetime.now(tz=None) -> datetime",
+      "datetime.datetime.utcnow() -> datetime (deprecated since Python 3.12; use now(datetime.UTC))",
+      "datetime.datetime.strptime(date_string, format) -> datetime",
+      "datetime.datetime.strftime(format) -> str",
+      "datetime.datetime.fromisoformat(date_string) -> datetime",
+      "datetime.timedelta(days=0, seconds=0, microseconds=0, minutes=0, hours=0, weeks=0)",
+      "datetime.date.today() -> date"
+    ]
+  },
+  "pathlib": {
+    "kind": "stdlib",
+    "modules": ["pathlib"],
+    "coverage_complete": false,
+    "source_url": "https://docs.python.org/3/library/pathlib.html",
+    "source_version": "3.14.7",
+    "source_checked_at": "2026-09-29",
+    "apis": ["pathlib.Path", "pathlib.Path.read_text", "pathlib.Path.write_text", "pathlib.Path.exists", "pathlib.Path.mkdir", "pathlib.Path.glob", "pathlib.Path.joinpath"],
+    "summary": "Object-oriented filesystem paths (standard library).",
+    "keywords": ["path", "file path", "directory"],
+    "signatures": [
+      "pathlib.Path(*pathsegments) -> Path",
+      "Path.read_text(encoding=None, errors=None) -> str",
+      "Path.write_text(data, encoding=None, errors=None, newline=None) -> int",
+      "Path.exists(*, follow_symlinks=True) -> bool",
+      "Path.mkdir(mode=0o777, parents=False, exist_ok=False) -> None",
+      "Path.glob(pattern, *, case_sensitive=None) -> Iterator[Path]",
+      "Path.joinpath(*pathsegments) -> Path"
+    ]
+  }
+}
