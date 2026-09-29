@@ -9,7 +9,7 @@ The dissertation experiment repository is
 It installs and evaluates DocGround but owns benchmark tasks, model runs, results,
 plots, screenshots, and dissertation interpretation.
 
-## Planned product workflow
+## Product workflow
 
 1. Accept the user's original task and selected model/provider.
 2. Retrieve verified documentation relevant to named or implied libraries.
@@ -27,15 +27,12 @@ revision history, documentation snapshot, model, and checks must be recorded.
 
 ## Current scope
 
-The core library prepares documentation-grounded prompt proposals and provides
-Chat Completions adapters for DeepSeek, GLM, xAI, and Mistral. The original task,
-retrieved library records, and documentation snapshot hash are available in each
-proposal. The bundled snapshot is partial and manually transcribed.
-
-Provider calls use explicit model selection and have no automatic retries.
-Truncated or filtered responses raise an error. Offline tests inject responses
-and block unmocked HTTP calls. Prompt approval, verification, and the interactive
-CLI are the next implementation stage. No API key is stored in Git.
+The initial implementation supports explicit provider selection for DeepSeek,
+GLM, xAI, and Mistral through a shared chat-completions adapter. It does not call
+OpenAI, Anthropic, or MiniMax. Live calls have no automatic retries. No API key is
+stored in Git. The bundled documentation snapshot is a small, partial, manually
+transcribed baseline, not a complete or continuously updated source of truth;
+missing API entries are therefore labelled unverified rather than hallucinated.
 
 ## Research boundary
 
@@ -53,5 +50,14 @@ python3 -m venv venv
 ./venv/bin/python -m pytest -q
 ```
 
-Live tests are opt-in and must never run in ordinary CI. See `docs/PLAN.md` for the
-implementation stages and acceptance criteria.
+`docground ground` displays a proposed grounded prompt without calling a model.
+`docground check` runs offline/static checks plus a PyPI existence lookup for
+unlisted imports. `docground generate` displays the original and suggested
+prompts, waits for an explicit prompt choice before calling the selected model,
+then requires a second approval before writing a provenance record. Generated
+code is not executed on the host. Optional correctness tests run only in a local
+Docker sandbox with networking disabled; Docker/image failures are reported as
+unavailable, not as code failures.
+
+Provider calls cost money and are never made by the test suite. See `docs/PLAN.md`
+for the broader implementation stages and acceptance criteria.
