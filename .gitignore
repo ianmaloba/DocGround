@@ -7,3 +7,6 @@ __pycache__/
 .DS_Store
 .coverage
 htmlcov/
+build/
+dist/
+AI_WORKFLOW_PROMPTS.md

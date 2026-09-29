@@ -9,7 +9,7 @@ The dissertation experiment repository is
 It installs and evaluates DocGround but owns benchmark tasks, model runs, results,
 plots, screenshots, and dissertation interpretation.
 
-## Product workflow
+## Planned product workflow
 
 1. Accept the user's original task and selected model/provider.
 2. Retrieve verified documentation relevant to named or implied libraries.
@@ -27,11 +27,15 @@ revision history, documentation snapshot, model, and checks must be recorded.
 
 ## Current scope
 
-The first implementation will preserve the verified draft behaviours while adding
-prompt revision and approval as first-class concepts. DeepSeek is the first live
-provider. GLM, OpenAI, Anthropic, xAI, MiniMax, and Mistral are provider slots and
-will be added behind the same adapter contract as credentials and access become
-available. No API key is stored in Git.
+The core library prepares documentation-grounded prompt proposals and provides
+Chat Completions adapters for DeepSeek, GLM, xAI, and Mistral. The original task,
+retrieved library records, and documentation snapshot hash are available in each
+proposal. The bundled snapshot is partial and manually transcribed.
+
+Provider calls use explicit model selection and have no automatic retries.
+Truncated or filtered responses raise an error. Offline tests inject responses
+and block unmocked HTTP calls. Prompt approval, verification, and the interactive
+CLI are the next implementation stage. No API key is stored in Git.
 
 ## Research boundary
 

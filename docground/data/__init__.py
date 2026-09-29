@@ -1,0 +1,1 @@
+"""Bundled documentation snapshot resources."""
