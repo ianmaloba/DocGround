@@ -1,8 +1,8 @@
 # DocGround
 
 DocGround is a model-agnostic wrapper for documentation-grounded code generation.
-This is the real project repository; the proof-of-concept baseline is
-[Draft-DocGround](https://github.com/ianmaloba/Draft-DocGround).
+It provides documentation grounding, prompt review, provider adapters, and
+verification as a reusable Python package.
 
 The dissertation experiment repository is
 [UEL-CN-7000-Experiments](https://github.com/ianmaloba/UEL-CN-7000-Experiments).
